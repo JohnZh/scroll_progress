@@ -60,7 +60,6 @@ function debounce(func, wait, immediate) {
   };
 }
 
-// スクロール率
 var progress = 0;
 
 // Creates the indicator, which is a small div lying in the lower left corner
@@ -69,11 +68,11 @@ var indicator = document.createElement('div');
 indicator.setAttribute('id', 'extention-scroll_progress');
 indicator.innerHTML = progress + ' %';
 indicator.style.position = 'fixed';
-indicator.style.left = '0';
-indicator.style.bottom = '0';
+indicator.style.right = '0';
+indicator.style.top = '0';
 indicator.style.zIndex = '99999999';
-indicator.style.padding = '3px';
-indicator.style.fontSize = '9px';
+indicator.style.padding = '2px 5px';
+indicator.style.fontSize = '12px';
 indicator.style.lineHeight = '1.2';
 indicator.style.background = '#eee';
 indicator.style.border = '1px solid #aaa';
@@ -105,9 +104,7 @@ function scrollHandler() {
   // console.log(progress);
 }
 
-// bodyがスクロールできる時のみ動作させる
 if (getComputedStyle(document.body).overflowY != 'auto') {
-  // 「window」for 'load' of webkit. 「document」 is not wokr 'load' on webkit.
   window.addEventListener('load', throttle(scrollHandler, 0));
   window.addEventListener('scroll', throttle(scrollHandler, 100));
 }
